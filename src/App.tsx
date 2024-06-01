@@ -1,24 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {RenderService} from "./service/render/render.service";
+import {Modal1} from "./component/modal1/modal1";
+import {Modal2} from "./component/modal2/modal2";
 
 function App() {
+  const renderService = RenderService.getInstance()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={() => renderService.add({component: <Modal1 info1={'info1'} info2={'teste'}/> })}>Abrir modal 1</button>
+      <button onClick={() => renderService.add({component: <Modal2/> })}>Abrir modal 2</button>
     </div>
   );
 }
